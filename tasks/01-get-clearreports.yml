@@ -1,0 +1,9 @@
+---
+- name: Create clearreports directory
+  file: path=/opt/clearreports state=directory mode="a+rw"
+
+- name: Get clearreports 
+  get_url:
+    url:  https://download.inetsoftware.de/clear-reports-war-{{ version }}.zip?S85JTSzSLUotyC8qKdYtB7INLfUM9AxNTfWqMgsA
+    dest: "/opt/clearreports"
+    mode: 0755

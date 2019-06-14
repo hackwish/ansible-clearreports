@@ -1,0 +1,18 @@
+---
+- name: Verify clearreports exists
+  stat: path=/opt/clearreports/clear-reports-war-{{ version }}.zip
+  register: clearreports_stat
+
+- name: Unarchive clearreports
+  unarchive:
+    src: /opt/clearreports/clear-reports-war-{{ version }}.zip
+    dest: /opt/clearreports/
+    remote_src: yes
+
+- name: Create symbolic link clearreports
+  file:
+    src: "/opt/clearreports/reporting.war"
+    dest: "/opt/tomcat/webapps/reporting.war"
+    state: link
+  notify:
+    - Restart Tomcat

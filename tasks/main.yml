@@ -1,0 +1,9 @@
+---
+# tasks file for clearreports
+
+- include: 01-get-clearreports.yml
+  tags: clearreports-get
+
+- include: 02-configure-clearreports.yml
+  tags: clearreports-configure
+  
